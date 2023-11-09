@@ -23,3 +23,12 @@ C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumot
 C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumotech\Lumotech\obj\Debug\net7.0\Lumotech.pdb
 C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumotech\Lumotech\obj\Debug\net7.0\Lumotech.genruntimeconfig.cache
 C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumotech\Lumotech\obj\Debug\net7.0\ref\Lumotech.dll
+C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumotech\Lumotech\bin\Debug\net7.0\nlog.config
+C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumotech\Lumotech\bin\Debug\net7.0\NLog.dll
+C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumotech\Lumotech\bin\Debug\net7.0\NLog.Extensions.Logging.dll
+C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumotech\Lumotech\bin\Debug\net7.0\Contracts.dll
+C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumotech\Lumotech\bin\Debug\net7.0\LoggerService.dll
+C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumotech\Lumotech\bin\Debug\net7.0\LoggerService.pdb
+C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumotech\Lumotech\bin\Debug\net7.0\Contracts.pdb
+C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumotech\Lumotech\obj\Debug\net7.0\Lumotech.csproj.AssemblyReference.cache
+C:\Users\vanya\OneDrive\Рабочий стол\Lumotech\Lumotech-back-end\Lumotech\Lumotech\obj\Debug\net7.0\Lumotech.csproj.CopyComplete

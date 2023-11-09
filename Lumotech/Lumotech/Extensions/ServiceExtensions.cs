@@ -1,4 +1,7 @@
-﻿namespace Lumotech.Extensions;
+﻿using Contracts;
+using LoggerService;
+
+namespace Lumotech.Extensions;
 
 public static class ServiceExtensions
 {
@@ -10,4 +13,7 @@ public static class ServiceExtensions
                     .AllowAnyMethod()
                     .AllowAnyHeader());
         });
+
+    public static void ConfigureLoggerSerivce(this IServiceCollection services)
+        => services.AddSingleton<ILoggerManager, LoggerManager>();
 }

@@ -1,8 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "XdcMBUXVGv+FDFAj5N+0f2639nynX6/5+uxvvWzG0LXFFub/fJH36OixCesaK9D6WZEQb+ITtc8626poA2rZBQ==",
+  "dgSpecHash": "Ped1EVwigHeEb5ls1D8eJggDFqDIRdCJY+oc5zTq/rHY9MbaaYiihYOkExpaNEseD1iSp+MTuZHDk8ZVLzejLA==",
   "success": true,
   "projectFilePath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Lumotech\\Lumotech.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\vanya\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\vanya\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
+    "C:\\Users\\vanya\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\vanya\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
+    "C:\\Users\\vanya\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\vanya\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\vanya\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\vanya\\.nuget\\packages\\nlog\\4.7.11\\nlog.4.7.11.nupkg.sha512",
+    "C:\\Users\\vanya\\.nuget\\packages\\nlog.extensions.logging\\1.7.4\\nlog.extensions.logging.1.7.4.nupkg.sha512"
+  ],
   "logs": []
 }

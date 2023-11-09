@@ -98,6 +98,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "NLog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[1.7.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
