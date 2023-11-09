@@ -1,27 +1,29 @@
-namespace Lumotech
+using Lumotech.Extensions;
+using Microsoft.AspNetCore.HttpOverrides;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.ConfigureCors();
+
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+    app.UseDeveloperExceptionPage();
+else
+    app.UseHsts();
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+    ForwardedHeaders = ForwardedHeaders.All
+});
 
-            // Add services to the container.
+app.UseCors("CorsPolicy");
 
-            builder.Services.AddControllers();
+app.UseAuthorization();
 
-            var app = builder.Build();
+app.MapControllers();
 
-            // Configure the HTTP request pipeline.
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-
-            app.MapControllers();
-
-            app.Run();
-        }
-    }
-}
+app.Run();
