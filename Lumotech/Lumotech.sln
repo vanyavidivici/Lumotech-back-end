@@ -5,6 +5,10 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumotech", "Lumotech\Lumotech.csproj", "{B133E472-813E-43CE-949A-5FCDA3085F0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{6167C001-5023-4F08-BBE7-5F6C83CC774A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{BB8E1738-9574-4361-B589-A686FF5F2CB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B133E472-813E-43CE-949A-5FCDA3085F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B133E472-813E-43CE-949A-5FCDA3085F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B133E472-813E-43CE-949A-5FCDA3085F0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6167C001-5023-4F08-BBE7-5F6C83CC774A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6167C001-5023-4F08-BBE7-5F6C83CC774A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6167C001-5023-4F08-BBE7-5F6C83CC774A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6167C001-5023-4F08-BBE7-5F6C83CC774A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB8E1738-9574-4361-B589-A686FF5F2CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB8E1738-9574-4361-B589-A686FF5F2CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB8E1738-9574-4361-B589-A686FF5F2CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB8E1738-9574-4361-B589-A686FF5F2CB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,19 +11,6 @@
         "runtime": {
           "bin/placeholder/Contracts.dll": {}
         }
-      },
-      "LoggerService/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Contracts": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/LoggerService.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/LoggerService.dll": {}
-        }
       }
     }
   },
@@ -32,16 +19,11 @@
       "type": "project",
       "path": "../Contracts/Contracts.csproj",
       "msbuildProject": "../Contracts/Contracts.csproj"
-    },
-    "LoggerService/1.0.0": {
-      "type": "project",
-      "path": "../LoggerService/LoggerService.csproj",
-      "msbuildProject": "../LoggerService/LoggerService.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "LoggerService >= 1.0.0"
+      "Contracts >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -50,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Lumotech\\Lumotech.csproj",
-      "projectName": "Lumotech",
-      "projectPath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Lumotech\\Lumotech.csproj",
+      "projectUniqueName": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\LoggerService\\LoggerService.csproj",
+      "projectName": "LoggerService",
+      "projectPath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\LoggerService\\LoggerService.csproj",
       "packagesPath": "C:\\Users\\vanya\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Lumotech\\obj\\",
+      "outputPath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\LoggerService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vanya\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -71,8 +53,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\LoggerService\\LoggerService.csproj": {
-              "projectPath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\LoggerService\\LoggerService.csproj"
+            "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Contracts\\Contracts.csproj": {
+              "projectPath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Contracts\\Contracts.csproj"
             }
           }
         }
@@ -98,9 +80,6 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
