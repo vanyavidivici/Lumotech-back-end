@@ -19,14 +19,9 @@ public class Order
     public Guid CarId { get; set; }
     public Car? Car { get; set; }
 
-    [ForeignKey(nameof(Robot))]
     public Guid RobotId { get; set; }
     public Robot? Robot { get; set; }
 
-    [ForeignKey(nameof(Location))]
-    public Guid LocationId { get; set; }
-    public Location? Location { get; set; }
-    
     public double GpsLatitude { get; set; }
     public double GpsLongitude { get; set; }
 }

@@ -8,6 +8,9 @@ LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nl
 
 builder.Services.ConfigureCors();
 builder.Services.ConfigureLoggerSerivce();
+builder.Services.AddAuthentication();
+builder.Services.ConfigureIdentity();
+
 
 builder.Services.AddControllers();
 
@@ -26,6 +29,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 app.UseCors("CorsPolicy");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

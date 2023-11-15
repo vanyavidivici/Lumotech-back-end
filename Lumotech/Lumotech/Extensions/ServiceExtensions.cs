@@ -1,5 +1,8 @@
 ﻿using Contracts;
+using Entities.Models;
 using LoggerService;
+using Microsoft.AspNetCore.Identity;
+using Repository;
 
 namespace Lumotech.Extensions;
 
@@ -14,6 +17,22 @@ public static class ServiceExtensions
                     .AllowAnyHeader());
         });
 
+    public static void ConfigureIdentity(this IServiceCollection services)
+    {
+        var builder = services.AddIdentity<User, IdentityRole>(o =>
+            {
+                o.Password.RequireDigit = true;
+                o.Password.RequireLowercase = false;
+                o.Password.RequireUppercase = false;
+                o.Password.RequireNonAlphanumeric = false;
+                o.Password.RequiredLength = 8;
+                o.User.RequireUniqueEmail = true;
+            })
+            .AddEntityFrameworkStores<RepositoryContext>()
+            .AddDefaultTokenProviders();
+    }
+
+    
     public static void ConfigureLoggerSerivce(this IServiceCollection services)
         => services.AddSingleton<ILoggerManager, LoggerManager>();
 }

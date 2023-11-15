@@ -10,7 +10,8 @@ public class Car
     public string? SerialNumber { get; set; }
     public string CarModel { get; set; }
     public string? BatteryCapacity { get; set; }
-    
+    public string? GpsLongitude { get; set; }
+    public string? GpsLatitude { get; set; }
     [ForeignKey("User")]
     public string? UserId { get; set; }
     public User? User { get; set; }
