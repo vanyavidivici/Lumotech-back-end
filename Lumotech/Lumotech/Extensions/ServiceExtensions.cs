@@ -31,8 +31,10 @@ public static class ServiceExtensions
             .AddEntityFrameworkStores<RepositoryContext>()
             .AddDefaultTokenProviders();
     }
-
     
     public static void ConfigureLoggerSerivce(this IServiceCollection services)
         => services.AddSingleton<ILoggerManager, LoggerManager>();
+
+    public static void ConfigureRepositoryManager(this IServiceCollection services) =>
+        services.AddScoped<IRepositoryManager, RepositoryManager>();
 }
