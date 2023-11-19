@@ -286,6 +286,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Contracts\\Contracts.csproj"
+              },
               "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Entities\\Entities.csproj": {
                 "projectPath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Entities\\Entities.csproj"
               }

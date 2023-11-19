@@ -316,6 +316,16 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contracts.dll": {}
+        }
+      },
       "Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -774,6 +784,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Contracts/Contracts.csproj",
+      "msbuildProject": "../Contracts/Contracts.csproj"
+    },
     "Entities/1.0.0": {
       "type": "project",
       "path": "../Entities/Entities.csproj",
@@ -782,6 +797,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Contracts >= 1.0.0",
       "Entities >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.14"
     ]
@@ -813,6 +829,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Contracts\\Contracts.csproj": {
+              "projectPath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Contracts\\Contracts.csproj"
+            },
             "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Entities\\Entities.csproj": {
               "projectPath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\Lumotech\\Lumotech-back-end\\Lumotech\\Entities\\Entities.csproj"
             }
