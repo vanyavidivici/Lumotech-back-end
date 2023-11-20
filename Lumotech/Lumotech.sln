@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Contracts", "Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{1D25AF28-F0AD-4E48-A9CA-4E1185C646B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumotech.Presentation", "Lumotech.Presentation\Lumotech.Presentation.csproj", "{8B4CD259-69B5-46CB-AD18-FBEF8E613539}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{1D25AF28-F0AD-4E48-A9CA-4E1185C646B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D25AF28-F0AD-4E48-A9CA-4E1185C646B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D25AF28-F0AD-4E48-A9CA-4E1185C646B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B4CD259-69B5-46CB-AD18-FBEF8E613539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B4CD259-69B5-46CB-AD18-FBEF8E613539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B4CD259-69B5-46CB-AD18-FBEF8E613539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B4CD259-69B5-46CB-AD18-FBEF8E613539}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
