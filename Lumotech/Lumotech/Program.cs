@@ -12,6 +12,7 @@ builder.Services.AddAuthentication();
 builder.Services.ConfigureIdentity();
 
 builder.Services.ConfigureRepositoryManager();
+builder.Services.ConfigureServiceManager();
 builder.Services.AddControllers();
 
 var app = builder.Build();
