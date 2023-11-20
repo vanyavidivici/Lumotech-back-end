@@ -1,6 +1,6 @@
 ﻿namespace Service.Contracts;
 
-public class ILocationService
+public interface ILocationService
 {
     
 }

@@ -1,6 +1,8 @@
-﻿namespace Service.Contracts;
+﻿using Entities.Models;
 
-public class ICarService
+namespace Service.Contracts;
+
+public interface ICarService
 {
-    
+    IEnumerable<Car> GetAllCars(bool trackChanges);
 }
