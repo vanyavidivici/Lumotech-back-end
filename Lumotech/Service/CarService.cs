@@ -21,18 +21,10 @@ internal sealed class CarService : ICarService
 
     public IEnumerable<CarDto> GetAllCars(bool trackChanges)
     {
-        try
-        {
-            var cars = _repository.Car.GetAllCars(trackChanges);
+        var cars = _repository.Car.GetAllCars(trackChanges);
             
-            var carsDto = _mapper.Map<IEnumerable<CarDto>>(cars);
+        var carsDto = _mapper.Map<IEnumerable<CarDto>>(cars);
             
-            return carsDto;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError($"Something went wrong in the {nameof(GetAllCars)} service method {ex}");
-            throw;
-        }
+        return carsDto;
     }
 }
