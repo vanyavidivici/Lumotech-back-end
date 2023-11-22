@@ -12,9 +12,16 @@ public class CarsController : ControllerBase
     public CarsController(IServiceManager service) => _service = service;
     
     [HttpGet]
-    public IActionResult GetCars()
+    public async Task<IActionResult> GetCars()
     {
-        var cars = _service.CarService.GetAllCars(trackChanges: false);
+        var cars = await _service.CarService.GetAllCarsAsync(trackChanges: false);
         return Ok(cars);
+    }
+    
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetCar(Guid id)
+    {
+        var car = await _service.CarService.GetCarAsync(id, trackChanges: false);
+        return Ok(car);
     }
 }

@@ -5,5 +5,6 @@ namespace Service.Contracts;
 
 public interface ICarService
 {
-    IEnumerable<CarDto> GetAllCars(bool trackChanges);
+    Task<IEnumerable<CarDto>> GetAllCarsAsync(bool trackChanges);
+    Task<CarDto> GetCarAsync(Guid carId, bool trackChanges);
 }

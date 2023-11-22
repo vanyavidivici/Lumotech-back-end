@@ -30,5 +30,5 @@ public sealed class RepositoryManager : IRepositoryManager
     public ISubscriptionRepository Subscription => _subscriptionRepository.Value;
     public ILocationRepository Location => _locationRepository.Value;
 
-    public void Save() => _repositoryContext.SaveChanges();
+    public async Task SaveAsync() => await _repositoryContext.SaveChangesAsync();
 }

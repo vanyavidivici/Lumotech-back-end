@@ -9,5 +9,5 @@ public interface IRepositoryManager
     ISubscriptionRepository Subscription { get; }
     ILocationRepository Location { get; }
 
-    void Save();
+    Task SaveAsync();
 }

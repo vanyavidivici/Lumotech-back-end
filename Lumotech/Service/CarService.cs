@@ -19,12 +19,21 @@ internal sealed class CarService : ICarService
         _mapper = mapper;
     }
 
-    public IEnumerable<CarDto> GetAllCars(bool trackChanges)
+    public async Task<IEnumerable<CarDto>> GetAllCarsAsync(bool trackChanges)
     {
-        var cars = _repository.Car.GetAllCars(trackChanges);
+        var cars = await _repository.Car.GetAllCarsAsync(trackChanges);
             
         var carsDto = _mapper.Map<IEnumerable<CarDto>>(cars);
             
         return carsDto;
+    }
+
+    public async Task<CarDto> GetCarAsync(Guid carId, bool trackChanges)
+    {
+        var car = await _repository.Car.GetCarAsync(carId, trackChanges);
+        
+        var carDto = _mapper.Map<CarDto>(car);
+        
+        return carDto;
     }
 }
