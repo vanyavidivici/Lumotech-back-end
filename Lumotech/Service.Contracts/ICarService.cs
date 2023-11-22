@@ -1,8 +1,9 @@
 ﻿using Entities.Models;
+using Shared.DataTransferObjects;
 
 namespace Service.Contracts;
 
 public interface ICarService
 {
-    IEnumerable<Car> GetAllCars(bool trackChanges);
+    IEnumerable<CarDto> GetAllCars(bool trackChanges);
 }

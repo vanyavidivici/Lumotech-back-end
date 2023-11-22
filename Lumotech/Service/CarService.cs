@@ -1,6 +1,8 @@
-﻿using Contracts;
+﻿using AutoMapper;
+using Contracts;
 using Entities.Models;
 using Service.Contracts;
+using Shared.DataTransferObjects;
 
 namespace Service;
 
@@ -8,20 +10,24 @@ internal sealed class CarService : ICarService
 {
     private readonly IRepositoryManager _repository;
     private readonly ILoggerManager _logger;
+    private readonly IMapper _mapper;
 
-    public CarService(IRepositoryManager repository, ILoggerManager logger)
+    public CarService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
     {
         _repository = repository;
         _logger = logger;
+        _mapper = mapper;
     }
 
-    public IEnumerable<Car> GetAllCars(bool trackChanges)
+    public IEnumerable<CarDto> GetAllCars(bool trackChanges)
     {
         try
         {
             var cars = _repository.Car.GetAllCars(trackChanges);
             
-            return cars;
+            var carsDto = _mapper.Map<IEnumerable<CarDto>>(cars);
+            
+            return carsDto;
         }
         catch (Exception ex)
         {
