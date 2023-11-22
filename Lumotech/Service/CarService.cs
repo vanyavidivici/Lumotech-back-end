@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Contracts;
+using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
@@ -28,9 +29,11 @@ internal sealed class CarService : ICarService
         return carsDto;
     }
 
-    public async Task<CarDto> GetCarAsync(Guid carId, bool trackChanges)
+    public async Task<CarDto> GetCarAsync(Guid id, bool trackChanges)
     {
-        var car = await _repository.Car.GetCarAsync(carId, trackChanges);
+        var car = await _repository.Car.GetCarAsync(id, trackChanges);
+        if (car is null) 
+            throw new CarNotFoundException(id);
         
         var carDto = _mapper.Map<CarDto>(car);
         
