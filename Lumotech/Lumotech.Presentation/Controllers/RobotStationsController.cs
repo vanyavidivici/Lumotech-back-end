@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
+using Shared.DataTransferObjects;
 
 namespace Lumotech.Presentation.Controllers;
 
@@ -24,5 +25,17 @@ public class RobotStationsController : ControllerBase
     {
         var robotStation = await _service.RobotStationService.GetRobotStationAsync(id, trackChanges: false);
         return Ok(robotStation);
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> CreateRobotStation([FromBody] RobotStationForCreationDto robotStation)
+    {
+        if (robotStation is null)
+            return BadRequest("RobotStationForCreationDto object is null");
+        
+        var createdRobotStation = await _service.RobotStationService.CreateRobotStation(robotStation);
+        
+        return CreatedAtRoute("RobotStationById", new { id = createdRobotStation.Id },
+            createdRobotStation);
     }
 }

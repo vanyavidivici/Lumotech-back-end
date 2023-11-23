@@ -18,4 +18,6 @@ public class RobotStationRepository : RepositoryBase<RobotStation>, IRobotStatio
     public async Task<RobotStation> GetRobotStationAsync(Guid robotStationId, bool trackChanges) => 
         await FindByCondition(c => c.Id.Equals(robotStationId), trackChanges)
             .SingleOrDefaultAsync();
+
+    public void CreateRobotStation(RobotStation robotStation) => Create(robotStation);
 }

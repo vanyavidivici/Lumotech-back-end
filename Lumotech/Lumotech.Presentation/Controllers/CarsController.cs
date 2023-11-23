@@ -27,7 +27,7 @@ public class CarsController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<IActionResult> CreateCompany([FromBody] CarForCreationDto car)
+    public async Task<IActionResult> CreateCar([FromBody] CarForCreationDto car)
     {
         if (car is null)
             return BadRequest("CarForCreationDto object is null");
