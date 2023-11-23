@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Contracts;
+using Entities.Exceptions;
 using Service.Contracts;
+using Shared.DataTransferObjects;
 
 namespace Service;
 
@@ -15,5 +17,25 @@ internal sealed class RobotStationService : IRobotStationService
         _repository = repository;
         _logger = logger;
         _mapper = mapper;
+    }
+
+    public async Task<IEnumerable<RobotStationDto>> GetAllRobotStationsAsync(bool trackChanges)
+    {
+        var robotStations  = await _repository.RobotStation.GetAllRobotStationsAsync(trackChanges);
+            
+        var robotStationsDto = _mapper.Map<IEnumerable<RobotStationDto>>(robotStations);
+            
+        return robotStationsDto;
+    }
+
+    public async Task<RobotStationDto> GetRobotStationAsync(Guid id, bool trackChanges)
+    {
+        var robotStation = await _repository.RobotStation.GetRobotStationAsync(id, trackChanges);
+        if (robotStation is null) 
+            throw new RobotStationNotFoundException(id);
+        
+        var robotStationDto = _mapper.Map<RobotStationDto>(robotStation);
+        
+        return robotStationDto;
     }
 }
