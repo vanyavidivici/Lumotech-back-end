@@ -10,5 +10,6 @@ public class MappingProfile : Profile
     {
         CreateMap<Car, CarDto>();
         CreateMap<RobotStation, RobotStationDto>();
+        CreateMap<Robot, RobotDto>();
     }
 }
