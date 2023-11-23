@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
+using Shared.DataTransferObjects;
 
 namespace Lumotech.Presentation.Controllers;
 
@@ -18,10 +19,22 @@ public class CarsController : ControllerBase
         return Ok(cars);
     }
     
-    [HttpGet("{id:guid}")]
+    [HttpGet("{id:guid}", Name = "CarById")]
     public async Task<IActionResult> GetCar(Guid id)
     {
         var car = await _service.CarService.GetCarAsync(id, trackChanges: false);
         return Ok(car);
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> CreateCompany([FromBody] CarForCreationDto car)
+    {
+        if (car is null)
+            return BadRequest("CarForCreationDto object is null");
+        
+        var createdCar = await _service.CarService.CreateCar(car);
+        
+        return CreatedAtRoute("CarById", new { id = createdCar.Id },
+            createdCar);
     }
 }

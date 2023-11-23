@@ -6,4 +6,5 @@ public interface ICarRepository
 {
     Task<IEnumerable<Car>> GetAllCarsAsync(bool trackChanges);
     Task<Car> GetCarAsync(Guid carId, bool trackChanges);
+    void CreateCar(Car car);
 }

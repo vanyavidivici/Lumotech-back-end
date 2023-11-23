@@ -18,4 +18,6 @@ public class CarRepository : RepositoryBase<Car>, ICarRepository
     public async Task<Car> GetCarAsync(Guid carId, bool trackChanges) => 
         await FindByCondition(c => c.Id.Equals(carId), trackChanges)
             .SingleOrDefaultAsync();
+
+    public void CreateCar(Car car) => Create(car);
 }

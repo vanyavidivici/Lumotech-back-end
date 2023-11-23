@@ -19,7 +19,7 @@ public class RobotStationsController : ControllerBase
         return Ok(robotStations);
     }
     
-    [HttpGet("{id:guid}")]
+    [HttpGet("{id:guid}", Name = "RobotStationById")]
     public async Task<IActionResult> GetRobotStation(Guid id)
     {
         var robotStation = await _service.RobotStationService.GetRobotStationAsync(id, trackChanges: false);
