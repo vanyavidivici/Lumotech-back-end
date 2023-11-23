@@ -17,6 +17,9 @@ public class RepositoryContext : IdentityDbContext<User>
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.ApplyConfiguration(new CarConfiguration());
+        modelBuilder.ApplyConfiguration(new LocationConfiguration());
+        modelBuilder.ApplyConfiguration(new RobotStationConfiguration());
+        modelBuilder.ApplyConfiguration(new RobotConfiguration());
     }
 
     public DbSet<Car>? Cars{ get; set; }

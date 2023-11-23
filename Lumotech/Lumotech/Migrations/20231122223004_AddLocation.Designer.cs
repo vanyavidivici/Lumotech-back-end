@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository;
 
@@ -11,9 +12,11 @@ using Repository;
 namespace Lumotech.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20231122223004_AddLocation")]
+    partial class AddLocation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,23 +174,13 @@ namespace Lumotech.Migrations
                     b.HasIndex("RobotStationId");
 
                     b.ToTable("Robots");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("1f3e9b74-abc1-48a7-901b-caf65e67e196"),
-                            RobotStationId = new Guid("1aec523e-e4ef-4876-bb18-09526ad77e29"),
-                            SerialNumber = "0000011",
-                            TechnicalStatus = "Good"
-                        });
                 });
 
             modelBuilder.Entity("Entities.Models.RobotStation", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("RobotStationId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("RobotStationId");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("GpsLatitude")
                         .HasColumnType("nvarchar(max)");
@@ -203,19 +196,11 @@ namespace Lumotech.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
-                    b.HasKey("Id");
+                    b.HasKey("RobotStationId");
 
                     b.HasIndex("LocationId");
 
                     b.ToTable("RobotStations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("1aec523e-e4ef-4876-bb18-09526ad77e29"),
-                            LocationId = new Guid("7d95a214-b50c-4ad3-8d06-15787d1db8f9"),
-                            StationName = "Andromeda_1"
-                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Subscription", b =>

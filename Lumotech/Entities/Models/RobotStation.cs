@@ -5,9 +5,10 @@ namespace Entities.Models;
 
 public class RobotStation
 {
-    public Guid RobotStationId { get; set; }
+    [Column("RobotStationId")]
+    public Guid Id { get; set; }
     
-    [Required(ErrorMessage = "Company address is a required field.")]
+    [Required(ErrorMessage = "RobotStation address is a required field.")]
     [MaxLength(60, ErrorMessage = "Maximum length for the Station name is 60 characters.")]
     public string? StationName { get; set; }
     
