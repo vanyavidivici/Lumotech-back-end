@@ -32,7 +32,7 @@ public class CarsController : ControllerBase
         if (car is null)
             return BadRequest("CarForCreationDto object is null");
         
-        var createdCar = await _service.CarService.CreateCar(car);
+        var createdCar = await _service.CarService.CreateCarAsync(car);
         
         return CreatedAtRoute("CarById", new { id = createdCar.Id },
             createdCar);

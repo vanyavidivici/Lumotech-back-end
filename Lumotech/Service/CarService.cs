@@ -40,7 +40,7 @@ internal sealed class CarService : ICarService
         return carDto;
     }
 
-    public async Task<CarDto> CreateCar(CarForCreationDto car)
+    public async Task<CarDto> CreateCarAsync(CarForCreationDto car)
     {
         var carEntity = _mapper.Map<Car>(car);
         

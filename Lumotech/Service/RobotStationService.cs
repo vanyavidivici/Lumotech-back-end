@@ -40,7 +40,7 @@ internal sealed class RobotStationService : IRobotStationService
         return robotStationDto;
     }
 
-    public async Task<RobotStationDto> CreateRobotStation(RobotStationForCreationDto robotStation)
+    public async Task<RobotStationDto> CreateRobotStationAsync(RobotStationForCreationDto robotStation)
     {
         var robotStationEntity = _mapper.Map<RobotStation>(robotStation);
         

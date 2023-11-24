@@ -33,7 +33,7 @@ public class RobotStationsController : ControllerBase
         if (robotStation is null)
             return BadRequest("RobotStationForCreationDto object is null");
         
-        var createdRobotStation = await _service.RobotStationService.CreateRobotStation(robotStation);
+        var createdRobotStation = await _service.RobotStationService.CreateRobotStationAsync(robotStation);
         
         return CreatedAtRoute("RobotStationById", new { id = createdRobotStation.Id },
             createdRobotStation);
