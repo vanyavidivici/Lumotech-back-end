@@ -20,6 +20,7 @@ public class RepositoryContext : IdentityDbContext<User>
         modelBuilder.ApplyConfiguration(new LocationConfiguration());
         modelBuilder.ApplyConfiguration(new RobotStationConfiguration());
         modelBuilder.ApplyConfiguration(new RobotConfiguration());
+        modelBuilder.ApplyConfiguration(new RoleConfiguration());
     }
 
     public DbSet<Car>? Cars{ get; set; }
