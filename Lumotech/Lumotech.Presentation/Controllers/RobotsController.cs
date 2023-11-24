@@ -40,4 +40,12 @@ public class RobotsController : ControllerBase
         return CreatedAtRoute("GetRobotForRobotStation", new { robotStationId, 
                 id = robotToReturn.Id }, robotToReturn);
     }
+    
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteRobotForRobotStation(Guid robotStationId, Guid id)
+    {
+        await _service.RobotService.DeleteRobotForRobotStationAsync(robotStationId, id, trackChanges: false);
+
+        return NoContent();
+    }
 }

@@ -23,4 +23,6 @@ public class RobotRepository : RepositoryBase<Robot>, IRobotRepository
         robot.RobotStationId = robotStationId;
         Create(robot);
     }
+
+    public void DeleteRobot(Robot robot) => Delete(robot);
 }

@@ -20,4 +20,5 @@ public class CarRepository : RepositoryBase<Car>, ICarRepository
             .SingleOrDefaultAsync();
 
     public void CreateCar(Car car) => Create(car);
+    public void DeleteCar(Car car) => Delete(car);
 }

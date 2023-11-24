@@ -31,9 +31,7 @@ internal sealed class RobotStationService : IRobotStationService
 
     public async Task<RobotStationDto> GetRobotStationAsync(Guid id, bool trackChanges)
     {
-        var robotStation = await _repository.RobotStation.GetRobotStationAsync(id, trackChanges);
-        if (robotStation is null) 
-            throw new RobotStationNotFoundException(id);
+        var robotStation = await GetRobotStationAndCheckIfItExists(id, trackChanges);
         
         var robotStationDto = _mapper.Map<RobotStationDto>(robotStation);
         
@@ -49,5 +47,22 @@ internal sealed class RobotStationService : IRobotStationService
         
         var robotStationToReturn = _mapper.Map<RobotStationDto>(robotStationEntity);
         return robotStationToReturn;
+    }
+
+    public async Task DeleteRobotStationAsync(Guid id, bool trackChanges)
+    {
+        var robotStation = await GetRobotStationAndCheckIfItExists(id, trackChanges);
+        
+        _repository.RobotStation.DeleteRobotStation(robotStation);
+        await _repository.SaveAsync();
+    }
+    
+    private async Task<RobotStation> GetRobotStationAndCheckIfItExists(Guid id, bool trackChanges)
+    {
+        var robotStation = await _repository.RobotStation.GetRobotStationAsync(id, trackChanges);
+        if (robotStation is null)
+            throw new RobotStationNotFoundException(id);
+        
+        return robotStation;
     }
 }

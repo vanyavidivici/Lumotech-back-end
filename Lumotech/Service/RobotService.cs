@@ -59,12 +59,31 @@ internal sealed class RobotService : IRobotService
         var employeeToReturn = _mapper.Map<RobotDto>(robotEntity);
         return employeeToReturn;
     }
-    
+
+    public async Task DeleteRobotForRobotStationAsync(Guid robotStationId, Guid id, bool trackChanges)
+    {
+        await CheckIfRobotStationExists(robotStationId, trackChanges);
+
+        var robotDb = await GetRobotForRobotStationAndCheckIfItExists(robotStationId, id, trackChanges);
+        
+        _repository.Robot.DeleteRobot(robotDb);
+        await _repository.SaveAsync();
+    }
+
     private async Task CheckIfRobotStationExists(Guid robotStationId, bool trackChanges)
     {
         var robotStation = await _repository.RobotStation.GetRobotStationAsync(robotStationId, trackChanges);
         
         if (robotStation is null)
             throw new RobotStationNotFoundException(robotStationId);
+    }
+    
+    private async Task<Robot> GetRobotForRobotStationAndCheckIfItExists(Guid robotStationId, Guid id, bool trackChanges)
+    {
+        var robotDb = await _repository.Robot.GetRobotAsync(robotStationId, id, trackChanges);
+        if (robotDb is null)
+            throw new RobotNotFoundException(id);
+
+        return robotDb;
     }
 }

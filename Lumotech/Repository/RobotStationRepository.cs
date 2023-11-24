@@ -20,4 +20,5 @@ public class RobotStationRepository : RepositoryBase<RobotStation>, IRobotStatio
             .SingleOrDefaultAsync();
 
     public void CreateRobotStation(RobotStation robotStation) => Create(robotStation);
+    public void DeleteRobotStation(RobotStation robotStation) => Delete(robotStation);
 }

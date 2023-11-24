@@ -31,9 +31,7 @@ internal sealed class CarService : ICarService
 
     public async Task<CarDto> GetCarAsync(Guid id, bool trackChanges)
     {
-        var car = await _repository.Car.GetCarAsync(id, trackChanges);
-        if (car is null) 
-            throw new CarNotFoundException(id);
+        var car = await GetCarAndCheckIfItExists(id, trackChanges);
         
         var carDto = _mapper.Map<CarDto>(car);
         
@@ -49,5 +47,22 @@ internal sealed class CarService : ICarService
         
         var carToReturn = _mapper.Map<CarDto>(carEntity);
         return carToReturn;
+    }
+
+    public async Task DeleteCarAsync(Guid id, bool trackChanges)
+    {
+        var company = await GetCarAndCheckIfItExists(id, trackChanges);
+        
+        _repository.Car.DeleteCar(company);
+        await _repository.SaveAsync();
+    }
+    
+    private async Task<Car> GetCarAndCheckIfItExists(Guid id, bool trackChanges)
+    {
+        var car = await _repository.Car.GetCarAsync(id, trackChanges);
+        if (car is null)
+            throw new CarNotFoundException(id);
+        
+        return car;
     }
 }

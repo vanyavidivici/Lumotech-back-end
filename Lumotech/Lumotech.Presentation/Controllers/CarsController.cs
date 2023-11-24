@@ -37,4 +37,12 @@ public class CarsController : ControllerBase
         return CreatedAtRoute("CarById", new { id = createdCar.Id },
             createdCar);
     }
+    
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteCar(Guid id)
+    {
+        await _service.CarService.DeleteCarAsync(id, trackChanges: false);
+        
+        return NoContent();
+    }
 }
