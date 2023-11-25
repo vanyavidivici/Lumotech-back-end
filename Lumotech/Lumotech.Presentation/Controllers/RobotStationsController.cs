@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Lumotech.Presentation.ActionFilters;
+using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 
@@ -28,11 +29,9 @@ public class RobotStationsController : ControllerBase
     }
     
     [HttpPost]
+    [ServiceFilter(typeof(ValidationFilterAttribute))]
     public async Task<IActionResult> CreateRobotStation([FromBody] RobotStationForCreationDto robotStation)
     {
-        if (robotStation is null)
-            return BadRequest("RobotStationForCreationDto object is null");
-        
         var createdRobotStation = await _service.RobotStationService.CreateRobotStationAsync(robotStation);
         
         return CreatedAtRoute("RobotStationById", new { id = createdRobotStation.Id },

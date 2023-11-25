@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository;
 
@@ -11,9 +12,11 @@ using Repository;
 namespace Lumotech.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20231124220053_AddRoleConfiguration")]
+    partial class AddRoleConfiguration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -295,7 +298,7 @@ namespace Lumotech.Migrations
                     b.Property<DateTime?>("SubscriptionExpirationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("SubscriptionId")
+                    b.Property<Guid>("SubscriptionId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -349,19 +352,19 @@ namespace Lumotech.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "65621801-4cdd-4cd2-a386-82f9bb663ea1",
+                            Id = "1fbb87a7-39c7-4d59-abb7-75b1a77a2224",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "5a5af7ce-2db8-43b9-a901-d78bedd4d392",
+                            Id = "00199079-d8bf-4a49-9d7e-a89520813b12",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "63c610a6-604f-4d3a-9a5b-9f7e34a8b8ea",
+                            Id = "27d78f14-3479-4cf1-9911-fb3443adc8ff",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -531,7 +534,9 @@ namespace Lumotech.Migrations
                 {
                     b.HasOne("Entities.Models.Subscription", "Subscription")
                         .WithMany()
-                        .HasForeignKey("SubscriptionId");
+                        .HasForeignKey("SubscriptionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Subscription");
                 });

@@ -11,7 +11,7 @@ public class User : IdentityUser
     public DateTime? SubscriptionExpirationDate { get; set; }
     
     [ForeignKey(nameof(Subscription))]
-    public Guid SubscriptionId { get; set; }
+    public Guid? SubscriptionId { get; set; }
     public Subscription? Subscription { get; set; }
     public ICollection<Car>? Cars { get; set; }
     public ICollection<Order>? Orders { get; set; }

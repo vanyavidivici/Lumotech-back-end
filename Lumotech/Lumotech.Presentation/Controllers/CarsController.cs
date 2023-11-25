@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Lumotech.Presentation.ActionFilters;
+using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 
@@ -27,11 +28,9 @@ public class CarsController : ControllerBase
     }
     
     [HttpPost]
+    [ServiceFilter(typeof(ValidationFilterAttribute))]
     public async Task<IActionResult> CreateCar([FromBody] CarForCreationDto car)
     {
-        if (car is null)
-            return BadRequest("CarForCreationDto object is null");
-        
         var createdCar = await _service.CarService.CreateCarAsync(car);
         
         return CreatedAtRoute("CarById", new { id = createdCar.Id },

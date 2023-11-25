@@ -1,5 +1,6 @@
 using Contracts;
 using Lumotech.Extensions;
+using Lumotech.Presentation.ActionFilters;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
@@ -21,6 +22,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
 });
+builder.Services.AddScoped<ValidationFilterAttribute>();
 
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(Lumotech.Presentation.AssemblyReference).Assembly);
