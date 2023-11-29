@@ -47,4 +47,15 @@ public class RobotsController : ControllerBase
 
         return NoContent();
     }
+    
+    [HttpPut("{id:guid}")]
+    [ServiceFilter(typeof(ValidationFilterAttribute))]
+    public async Task<IActionResult> UpdateRobotForRobotStation(Guid robotStationId, Guid id,
+        [FromBody] RobotForUpdateDto robot)
+    {
+        await _service.RobotService.UpdateRobotForRobotStationAsync(robotStationId, id, robot,
+            robotStatTrackChanges: false, robotTrackChanges: true);
+
+        return NoContent();
+    }
 }

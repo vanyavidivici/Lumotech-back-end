@@ -56,7 +56,15 @@ internal sealed class RobotStationService : IRobotStationService
         _repository.RobotStation.DeleteRobotStation(robotStation);
         await _repository.SaveAsync();
     }
-    
+
+    public async Task UpdateRobotStationAsync(Guid robotStationId, RobotStationForUpdateDto robotStationForUpdate, bool trackChanges)
+    {
+        var robotStation = await GetRobotStationAndCheckIfItExists(robotStationId, trackChanges);
+
+        _mapper.Map(robotStationForUpdate, robotStation);
+        await _repository.SaveAsync();
+    }
+
     private async Task<RobotStation> GetRobotStationAndCheckIfItExists(Guid id, bool trackChanges)
     {
         var robotStation = await _repository.RobotStation.GetRobotStationAsync(id, trackChanges);

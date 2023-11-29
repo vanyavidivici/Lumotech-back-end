@@ -15,5 +15,8 @@ public class MappingProfile : Profile
         CreateMap<RobotStationForCreationDto, RobotStation>();
         CreateMap<RobotForCreationDto, Robot>();
         CreateMap<UserForRegistrationDto, User>();
+        CreateMap<CarForUpdateDto, Car>();
+        CreateMap<RobotStationForUpdateDto, RobotStation>();
+        CreateMap<RobotForUpdateDto, Robot>();
     }
 }

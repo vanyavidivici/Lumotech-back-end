@@ -70,6 +70,17 @@ internal sealed class RobotService : IRobotService
         await _repository.SaveAsync();
     }
 
+    public async Task UpdateRobotForRobotStationAsync(Guid robotStationId, Guid id, RobotForUpdateDto robotForUpdate,
+        bool robotStatTrackChanges, bool robotTrackChanges)
+    {
+        await CheckIfRobotStationExists(robotStationId, robotTrackChanges);
+
+        var robotDb = await  GetRobotForRobotStationAndCheckIfItExists(robotStationId, id, robotTrackChanges);
+
+        _mapper.Map(robotForUpdate, robotDb);
+        await _repository.SaveAsync();
+    }
+
     private async Task CheckIfRobotStationExists(Guid robotStationId, bool trackChanges)
     {
         var robotStation = await _repository.RobotStation.GetRobotStationAsync(robotStationId, trackChanges);

@@ -44,4 +44,13 @@ public class CarsController : ControllerBase
         
         return NoContent();
     }
+    
+    [HttpPut("{id:guid}")]
+    [ServiceFilter(typeof(ValidationFilterAttribute))]
+    public async Task<IActionResult> UpdateCar(Guid id, [FromBody] CarForUpdateDto car)
+    {
+        await _service.CarService.UpdateCarAsync(id, car, trackChanges: true);
+
+        return NoContent();
+    }
 }

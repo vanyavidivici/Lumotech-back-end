@@ -8,4 +8,6 @@ public interface IRobotService
     Task<RobotDto> GetRobotAsync(Guid robotStationId, Guid id, bool trackChanges);
     Task<RobotDto> CreateRobotForRobotStationAsync(Guid robotStationId, RobotForCreationDto robotForCreation, bool trackChanges);
     Task DeleteRobotForRobotStationAsync(Guid robotStationId, Guid id, bool trackChanges);
+    Task UpdateRobotForRobotStationAsync(Guid robotStationId, Guid id,
+        RobotForUpdateDto robotForUpdate, bool robotStatTrackChanges, bool robotTrackChanges);
 }

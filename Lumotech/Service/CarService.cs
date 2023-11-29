@@ -56,7 +56,15 @@ internal sealed class CarService : ICarService
         _repository.Car.DeleteCar(company);
         await _repository.SaveAsync();
     }
-    
+
+    public async Task UpdateCarAsync(Guid carId, CarForUpdateDto carForUpdate, bool trackChanges)
+    {
+        var car = await GetCarAndCheckIfItExists(carId, trackChanges);
+        
+        _mapper.Map(carForUpdate, car);
+        await _repository.SaveAsync();
+    }
+
     private async Task<Car> GetCarAndCheckIfItExists(Guid id, bool trackChanges)
     {
         var car = await _repository.Car.GetCarAsync(id, trackChanges);
