@@ -22,7 +22,7 @@ internal sealed class RobotStationService : IRobotStationService
 
     public async Task<IEnumerable<RobotStationDto>> GetAllRobotStationsAsync(bool trackChanges)
     {
-        var robotStations  = await _repository.RobotStation.GetAllRobotStationsAsync(trackChanges);
+        var robotStations = await _repository.RobotStation.GetAllRobotStationsAsync(trackChanges);
             
         var robotStationsDto = _mapper.Map<IEnumerable<RobotStationDto>>(robotStations);
             

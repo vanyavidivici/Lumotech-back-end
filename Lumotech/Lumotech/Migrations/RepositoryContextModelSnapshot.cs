@@ -349,19 +349,19 @@ namespace Lumotech.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "65621801-4cdd-4cd2-a386-82f9bb663ea1",
+                            Id = "ab3c6ed0-d19a-4a23-8be0-558681bc6bda",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "5a5af7ce-2db8-43b9-a901-d78bedd4d392",
+                            Id = "f1b3b3ce-921a-43e7-aed8-68cf234d399b",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "63c610a6-604f-4d3a-9a5b-9f7e34a8b8ea",
+                            Id = "15bf418e-58ea-46b4-ab05-42f87a4e859c",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -519,7 +519,7 @@ namespace Lumotech.Migrations
             modelBuilder.Entity("Entities.Models.RobotStation", b =>
                 {
                     b.HasOne("Entities.Models.Location", "Location")
-                        .WithMany()
+                        .WithMany("RobotStations")
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -585,6 +585,11 @@ namespace Lumotech.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Entities.Models.Location", b =>
+                {
+                    b.Navigation("RobotStations");
                 });
 
             modelBuilder.Entity("Entities.Models.RobotStation", b =>

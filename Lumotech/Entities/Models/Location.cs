@@ -13,4 +13,6 @@ public class Location
     
     [Required(ErrorMessage = "City is a required field.")]
     public string? City { get; set; }
+    
+    public ICollection<RobotStation>? RobotStations { get; set; }
 }
