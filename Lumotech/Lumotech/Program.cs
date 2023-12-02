@@ -13,6 +13,8 @@ builder.Services.ConfigureCors();
 builder.Services.ConfigureLoggerSerivce();
 builder.Services.AddAuthentication();
 builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJWT(builder.Configuration);
+builder.Services.ConfigureSwagger();
 
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
@@ -40,6 +42,11 @@ app.UseStaticFiles();
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = ForwardedHeaders.All
+});
+app.UseSwagger();
+app.UseSwaggerUI(s =>
+{
+    s.SwaggerEndpoint("/swagger/v1/swagger.json", "Lumotech API v1");
 });
 
 app.UseCors("CorsPolicy");
