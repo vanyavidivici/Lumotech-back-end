@@ -7,4 +7,5 @@ public interface IServiceManager
     IRobotStationService RobotStationService { get; }
     ILocationService LocationService { get; }
     IAuthenticationService AuthenticationService { get; }
+    IUserService UserService { get; }
 }

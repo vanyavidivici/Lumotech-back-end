@@ -53,6 +53,7 @@ internal sealed class AuthenticationService : IAuthenticationService
             _logger.LogWarn($"{nameof(ValidateUser)}: Authentication failed. Wrong email or password.");
         
         return result;
+        
     }
     
     public async Task<string> CreateToken()
@@ -64,6 +65,7 @@ internal sealed class AuthenticationService : IAuthenticationService
         return new JwtSecurityTokenHandler().WriteToken(tokenOptions);
     }
     
+
     private SigningCredentials GetSigningCredentials()
     {
         var key = 
