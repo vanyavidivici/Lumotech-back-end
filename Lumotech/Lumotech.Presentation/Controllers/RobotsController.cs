@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace Lumotech.Presentation.Controllers;
 
@@ -14,10 +15,12 @@ public class RobotsController : ControllerBase
     public RobotsController(IServiceManager service) => _service = service;
     
     [HttpGet]
-    public async Task<IActionResult> GetRobotsForRobotStation(Guid robotStationId)
+    public async Task<IActionResult> GetRobotsForRobotStation(Guid robotStationId, 
+        [FromQuery] RobotParameters robotParameters)
     {
-        var robots = await _service.RobotService.GetRobotsAsync(robotStationId, 
+        var robots = await _service.RobotService.GetRobotsAsync(robotStationId, robotParameters,
             trackChanges: false);
+        
         return Ok(robots);
     }
     

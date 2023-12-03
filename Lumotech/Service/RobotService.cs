@@ -4,6 +4,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace Service;
 
@@ -20,13 +21,13 @@ internal sealed class RobotService : IRobotService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<RobotDto>> GetRobotsAsync(Guid robotStationId, bool trackChanges)
+    public async Task<IEnumerable<RobotDto>> GetRobotsAsync(Guid robotStationId, RobotParameters robotParameters, 
+        bool trackChanges)
     {
-        var robotStation = await _repository.RobotStation.GetRobotStationAsync(robotStationId, trackChanges);
-        if (robotStation is null) 
-            throw new RobotStationNotFoundException(robotStationId);
+        await CheckIfRobotStationExists(robotStationId, trackChanges);
         
-        var robotsFromDb = await _repository.Robot.GetRobotsAsync(robotStationId, trackChanges);
+        var robotsFromDb = await _repository.Robot
+            .GetRobotsAsync(robotStationId, robotParameters, trackChanges);
         var robotsDto = _mapper.Map<IEnumerable<RobotDto>>(robotsFromDb);
         
         return robotsDto;
@@ -34,9 +35,7 @@ internal sealed class RobotService : IRobotService
 
     public async Task<RobotDto> GetRobotAsync(Guid robotStationId, Guid id, bool trackChanges)
     {
-        var robotStation = await _repository.RobotStation.GetRobotStationAsync(robotStationId, trackChanges);
-        if (robotStation is null) 
-            throw new RobotStationNotFoundException(robotStationId);
+        await CheckIfRobotStationExists(robotStationId, trackChanges);
         
         var robotDb = await _repository.Robot.GetRobotAsync(robotStationId, id, trackChanges);
         if (robotDb is null)
