@@ -2,8 +2,10 @@
 using Contracts;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Service.Contracts;
+using Shared.DataTransferObjects;
 
 namespace Service;
 
@@ -23,6 +25,15 @@ internal sealed class UserService : IUserService
         _mapper = mapper;
         _userManager = userManager;
         _configuration = configuration;
+    }
+
+    public async Task<IEnumerable<UserDto>> GetAllUsersAsync()
+    {
+        var users = await _userManager.Users.ToListAsync();
+
+        var usersDto = _mapper.Map<IEnumerable<UserDto>>(users);
+
+        return usersDto;
     }
     
     public async Task<IdentityResult> DeleteUser(string userId)

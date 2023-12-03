@@ -12,6 +12,14 @@ public class UserController : ControllerBase
 
     public UserController(IServiceManager service) => _service = service;
     
+    [HttpGet]
+    public async Task<IActionResult> GetAllUsers()
+    {
+        var users = await _service.UserService.GetAllUsersAsync();
+
+        return Ok(users);
+    }
+    
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteUser(string id)
     {
