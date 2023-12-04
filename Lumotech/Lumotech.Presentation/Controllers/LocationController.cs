@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace Lumotech.Presentation.Controllers;
 
@@ -14,10 +15,10 @@ public class LocationController : ControllerBase
     public LocationController(IServiceManager service) => _service = service;
     
     [HttpGet]
-    public async Task<IActionResult> GetLocations()
+    public async Task<IActionResult> GetLocations([FromQuery] LocationParameters locationParameters)
     {
         var locations = 
-            await _service.LocationService.GetAllLocationsAsync(trackChanges: false);
+            await _service.LocationService.GetAllLocationsAsync(locationParameters, trackChanges: false);
         return Ok(locations);
     }
     

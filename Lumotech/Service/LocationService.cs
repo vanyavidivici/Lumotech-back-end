@@ -4,6 +4,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace Service;
 
@@ -20,9 +21,11 @@ internal sealed class LocationService : ILocationService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<LocationDto>> GetAllLocationsAsync(bool trackChanges)
+    public async Task<IEnumerable<LocationDto>> GetAllLocationsAsync(LocationParameters locationParameters, 
+        bool trackChanges)
     {
-        var locations = await _repository.Location.GetAllLocationsAsync(trackChanges);
+        var locations = await _repository.Location.GetAllLocationsAsync(locationParameters, 
+            trackChanges);
             
         var locationsDto = _mapper.Map<IEnumerable<LocationDto>>(locations);
             

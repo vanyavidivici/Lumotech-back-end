@@ -4,6 +4,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace Service;
 
@@ -20,9 +21,11 @@ internal sealed class RobotStationService : IRobotStationService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<RobotStationDto>> GetAllRobotStationsAsync(bool trackChanges)
+    public async Task<IEnumerable<RobotStationDto>> GetAllRobotStationsAsync(RobotStationParameters robotStationParameters, 
+        bool trackChanges)
     {
-        var robotStations = await _repository.RobotStation.GetAllRobotStationsAsync(trackChanges);
+        var robotStations = 
+            await _repository.RobotStation.GetAllRobotStationsAsync(robotStationParameters, trackChanges);
             
         var robotStationsDto = _mapper.Map<IEnumerable<RobotStationDto>>(robotStations);
             

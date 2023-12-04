@@ -4,10 +4,11 @@ using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace Service;
 
-internal sealed class CarService : ICarService
+public sealed class CarService : ICarService
 {
     private readonly IRepositoryManager _repository;
     private readonly ILoggerManager _logger;
@@ -20,9 +21,9 @@ internal sealed class CarService : ICarService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<CarDto>> GetAllCarsAsync(bool trackChanges)
+    public async Task<IEnumerable<CarDto>> GetAllCarsAsync(CarParameters carParameters, bool trackChanges)
     {
-        var cars = await _repository.Car.GetAllCarsAsync(trackChanges);
+        var cars = await _repository.Car.GetAllCarsAsync(carParameters, trackChanges);
             
         var carsDto = _mapper.Map<IEnumerable<CarDto>>(cars);
             

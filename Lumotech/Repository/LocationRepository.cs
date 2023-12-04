@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Shared.RequestFeatures;
 
 namespace Repository;
 
@@ -10,9 +11,12 @@ public class LocationRepository : RepositoryBase<Location>, ILocationRepository
     {
     }
 
-    public async Task<IEnumerable<Location>> GetAllLocationsAsync(bool trackChanges) =>
+    public async Task<IEnumerable<Location>> GetAllLocationsAsync(LocationParameters locationParameters, 
+        bool trackChanges) =>
         await FindAll(trackChanges)
             .OrderBy(c => c.Country)
+            .Skip((locationParameters.PageNumber - 1) * locationParameters.PageSize)
+            .Take(locationParameters.PageSize)
             .ToListAsync();
     
     public async Task<Location> GetLocationAsync(Guid locationId, bool trackChanges) =>

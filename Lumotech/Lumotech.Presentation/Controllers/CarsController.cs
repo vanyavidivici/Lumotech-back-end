@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace Lumotech.Presentation.Controllers;
 
@@ -14,9 +15,9 @@ public class CarsController : ControllerBase
     public CarsController(IServiceManager service) => _service = service;
     
     [HttpGet]
-    public async Task<IActionResult> GetCars()
+    public async Task<IActionResult> GetCars([FromQuery] CarParameters carParameters)
     {
-        var cars = await _service.CarService.GetAllCarsAsync(trackChanges: false);
+        var cars = await _service.CarService.GetAllCarsAsync(carParameters, trackChanges: false);
         return Ok(cars);
     }
     
