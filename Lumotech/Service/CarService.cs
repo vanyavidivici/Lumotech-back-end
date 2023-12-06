@@ -30,6 +30,15 @@ public sealed class CarService : ICarService
         return carsDto;
     }
 
+    public async Task<IEnumerable<CarDto>> GetAllCarsForUserAsync(string userId, CarParameters carParameters, bool trackChanges)
+    {
+        var cars = await _repository.Car.GetAllCarsForUserAsync(userId, carParameters, trackChanges);
+            
+        var carsDto = _mapper.Map<IEnumerable<CarDto>>(cars);
+            
+        return carsDto;
+    }
+
     public async Task<CarDto> GetCarAsync(Guid id, bool trackChanges)
     {
         var car = await GetCarAndCheckIfItExists(id, trackChanges);
@@ -39,10 +48,10 @@ public sealed class CarService : ICarService
         return carDto;
     }
 
-    public async Task<CarDto> CreateCarAsync(CarForCreationDto car)
+    public async Task<CarDto> CreateCarAsync(string userId, CarForCreationDto car)
     {
         var carEntity = _mapper.Map<Car>(car);
-        
+        carEntity.UserId = userId;
         _repository.Car.CreateCar(carEntity);
         await _repository.SaveAsync();
         

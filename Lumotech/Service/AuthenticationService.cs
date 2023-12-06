@@ -64,7 +64,6 @@ internal sealed class AuthenticationService : IAuthenticationService
         
         return new JwtSecurityTokenHandler().WriteToken(tokenOptions);
     }
-    
 
     private SigningCredentials GetSigningCredentials()
     {
@@ -79,7 +78,7 @@ internal sealed class AuthenticationService : IAuthenticationService
     {
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, _user.Email)
+            new Claim(ClaimTypes.NameIdentifier, _user.Id)
         };
         
         var roles = await _userManager.GetRolesAsync(_user);
