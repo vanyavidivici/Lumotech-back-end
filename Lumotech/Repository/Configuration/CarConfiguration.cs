@@ -11,11 +11,11 @@ public class CarConfiguration : IEntityTypeConfiguration<Car>
         builder.HasData(
             new Car
             {
-                Id = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
+                Id = new Guid("0f4c011c-a92f-42de-8343-165fc07926d6"),
                 PlateNumber = "AA2030AA",
                 SerialNumber = "VD9485445KD",
                 CarModel = "Tesla Model X",
-                BatteryCapacity = "100.0",
+                BatteryCapacity = 100.0
             }
         );
     }

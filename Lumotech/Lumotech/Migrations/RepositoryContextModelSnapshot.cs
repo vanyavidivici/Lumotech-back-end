@@ -29,23 +29,20 @@ namespace Lumotech.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("CarId");
 
-                    b.Property<string>("BatteryCapacity")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double?>("BatteryCapacity")
+                        .IsRequired()
+                        .HasColumnType("float");
 
                     b.Property<string>("CarModel")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GpsLatitude")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GpsLongitude")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PlateNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SerialNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -60,8 +57,8 @@ namespace Lumotech.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
-                            BatteryCapacity = "100.0",
+                            Id = new Guid("0f4c011c-a92f-42de-8343-165fc07926d6"),
+                            BatteryCapacity = 100.0,
                             CarModel = "Tesla Model X",
                             PlateNumber = "AA2030AA",
                             SerialNumber = "VD9485445KD"
@@ -148,12 +145,6 @@ namespace Lumotech.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("RobotId");
-
-                    b.Property<string>("GpsLatitude")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GpsLongitude")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("RobotStationId")
                         .HasColumnType("uniqueidentifier");
@@ -349,19 +340,19 @@ namespace Lumotech.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ab3c6ed0-d19a-4a23-8be0-558681bc6bda",
+                            Id = "0342cee5-3b5d-48aa-81aa-8e2857653790",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "f1b3b3ce-921a-43e7-aed8-68cf234d399b",
+                            Id = "5dc3a590-1a2d-4845-9e64-4381afb36375",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "15bf418e-58ea-46b4-ab05-42f87a4e859c",
+                            Id = "19e6e5de-e33a-485b-adfc-d7855eee8c2d",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

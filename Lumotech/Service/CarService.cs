@@ -23,6 +23,9 @@ public sealed class CarService : ICarService
 
     public async Task<IEnumerable<CarDto>> GetAllCarsAsync(CarParameters carParameters, bool trackChanges)
     {
+        if (!carParameters.ValidCapacityRange)
+            throw new MaxCapacityRangeBadRequestException();
+        
         var cars = await _repository.Car.GetAllCarsAsync(carParameters, trackChanges);
             
         var carsDto = _mapper.Map<IEnumerable<CarDto>>(cars);
@@ -32,6 +35,9 @@ public sealed class CarService : ICarService
 
     public async Task<IEnumerable<CarDto>> GetAllCarsForUserAsync(string userId, CarParameters carParameters, bool trackChanges)
     {
+        if (!carParameters.ValidCapacityRange)
+            throw new MaxCapacityRangeBadRequestException();
+        
         var cars = await _repository.Car.GetAllCarsForUserAsync(userId, carParameters, trackChanges);
             
         var carsDto = _mapper.Map<IEnumerable<CarDto>>(cars);
