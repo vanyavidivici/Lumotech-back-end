@@ -1,4 +1,5 @@
 ﻿using Lumotech.Presentation.ActionFilters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 
@@ -6,6 +7,7 @@ namespace Lumotech.Presentation.Controllers;
 
 [Route("api/users")]
 [ApiController]
+[Authorize(Roles = "Administrator")]
 public class UserController : ControllerBase
 {
     private readonly IServiceManager _service;

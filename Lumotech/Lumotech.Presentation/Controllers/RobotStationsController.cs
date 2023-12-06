@@ -1,4 +1,5 @@
 ﻿using Lumotech.Presentation.ActionFilters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
@@ -8,6 +9,7 @@ namespace Lumotech.Presentation.Controllers;
 
 [Route("api/robotstations")]
 [ApiController]
+[Authorize(Roles = "Administrator")]
 public class RobotStationsController : ControllerBase
 {
     private readonly IServiceManager _service;

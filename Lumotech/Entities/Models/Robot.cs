@@ -14,9 +14,6 @@ public class Robot
     [Required(ErrorMessage = "Technical status is a required field.")]
     public string? TechnicalStatus { get; set; }
     
-    public string? GpsLongitude { get; set; }
-    public string? GpsLatitude { get; set; }
-    
     [ForeignKey(nameof(RobotStation))]
     public Guid RobotStationId { get; set; }
     public RobotStation? RobotStation { get; set; }
