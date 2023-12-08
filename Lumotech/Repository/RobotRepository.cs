@@ -16,7 +16,7 @@ public class RobotRepository : RepositoryBase<Robot>, IRobotRepository
         bool trackChanges) => 
         await FindByCondition(e => e.RobotStationId.Equals(robotStationId), trackChanges)
             .Search(robotParameters.SearchTerm)
-            .OrderBy(e => e.SerialNumber)
+            .Sort(robotParameters.OrderBy)
             .Skip((robotParameters.PageNumber - 1) * robotParameters.PageSize)
             .Take(robotParameters.PageSize)
             .ToListAsync();

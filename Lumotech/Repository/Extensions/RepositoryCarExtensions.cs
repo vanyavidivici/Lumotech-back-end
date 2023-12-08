@@ -1,4 +1,6 @@
-﻿using Entities.Models;
+﻿using System.Linq.Dynamic.Core;
+using Entities.Models;
+using Repository.Extensions.Utility;
 
 namespace Repository.Extensions;
 
@@ -13,5 +15,18 @@ public static class RepositoryCarExtensions
             return cars;
         var lowerCaseTerm = searchTerm.Trim().ToLower();
         return cars.Where(e => e.CarModel.ToLower().Contains(lowerCaseTerm));
+    }
+    
+    public static IQueryable<Car> Sort(this IQueryable<Car> cars, string orderByQueryString)
+    {
+        if (string.IsNullOrWhiteSpace(orderByQueryString))
+            return cars.OrderBy(e => e.CarModel);
+        
+        var orderQuery = OrderQueryBuilder.CreateOrderQuery<Car>(orderByQueryString);
+        
+        if (string.IsNullOrWhiteSpace(orderQuery))
+            return cars.OrderBy(e => e.CarModel);
+        
+        return cars.OrderBy(orderQuery);
     }
 }

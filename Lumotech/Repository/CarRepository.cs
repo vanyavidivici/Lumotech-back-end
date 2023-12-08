@@ -15,7 +15,7 @@ public class CarRepository : RepositoryBase<Car>, ICarRepository
     public async Task<IEnumerable<Car>> GetAllCarsAsync(CarParameters carParameters, bool trackChanges) =>
     await FindAll(trackChanges)
             .Search(carParameters.SearchTerm)
-            .OrderBy(c => c.CarModel)
+            .Sort(carParameters.OrderBy)
             .Skip((carParameters.PageNumber - 1) * carParameters.PageSize)
             .Take(carParameters.PageSize)
             .ToListAsync();
@@ -24,7 +24,7 @@ public class CarRepository : RepositoryBase<Car>, ICarRepository
         GetAllCarsForUserAsync(string userId, CarParameters carParameters, bool trackChanges) =>
         await FindAll(trackChanges)
             .Search(carParameters.SearchTerm)
-            .OrderBy(c => c.CarModel)
+            .Sort(carParameters.OrderBy)
             .Skip((carParameters.PageNumber - 1) * carParameters.PageSize)
             .Take(carParameters.PageSize)
             .ToListAsync();
