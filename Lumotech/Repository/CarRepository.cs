@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
 using Shared.RequestFeatures;
 
 namespace Repository;
@@ -12,8 +13,8 @@ public class CarRepository : RepositoryBase<Car>, ICarRepository
     }
 
     public async Task<IEnumerable<Car>> GetAllCarsAsync(CarParameters carParameters, bool trackChanges) =>
-    await FindByCondition(c => (c.BatteryCapacity
-                >= carParameters.MinCapacity && c.BatteryCapacity <= carParameters.MaxCapacity), trackChanges)
+    await FindAll(trackChanges)
+            .Search(carParameters.SearchTerm)
             .OrderBy(c => c.CarModel)
             .Skip((carParameters.PageNumber - 1) * carParameters.PageSize)
             .Take(carParameters.PageSize)
@@ -21,8 +22,8 @@ public class CarRepository : RepositoryBase<Car>, ICarRepository
     
     public async Task<IEnumerable<Car>> 
         GetAllCarsForUserAsync(string userId, CarParameters carParameters, bool trackChanges) =>
-        await FindByCondition(c => c.UserId.Equals(userId) && (c.BatteryCapacity
-                >= carParameters.MinCapacity && c.BatteryCapacity <= carParameters.MaxCapacity), trackChanges)
+        await FindAll(trackChanges)
+            .Search(carParameters.SearchTerm)
             .OrderBy(c => c.CarModel)
             .Skip((carParameters.PageNumber - 1) * carParameters.PageSize)
             .Take(carParameters.PageSize)

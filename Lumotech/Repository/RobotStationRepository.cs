@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
 using Shared.RequestFeatures;
 
 namespace Repository;
@@ -14,6 +15,7 @@ public class RobotStationRepository : RepositoryBase<RobotStation>, IRobotStatio
     public async Task<IEnumerable<RobotStation>> GetAllRobotStationsAsync(RobotStationParameters robotStationParameters, 
         bool trackChanges) => 
         await FindAll(trackChanges)
+            .Search(robotStationParameters.SearchTerm)
             .OrderBy(c => c.LocationId)
             .Skip((robotStationParameters.PageNumber - 1) * robotStationParameters.PageSize)
             .Take(robotStationParameters.PageSize)

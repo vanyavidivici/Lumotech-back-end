@@ -2,5 +2,5 @@
 
 public class RobotParameters : RequestParameters
 {
-    
+    public string? SearchTerm { get; set; }
 }
