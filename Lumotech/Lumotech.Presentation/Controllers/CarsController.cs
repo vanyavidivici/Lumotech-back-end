@@ -29,7 +29,6 @@ public class CarsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetCars([FromQuery] CarParameters carParameters)
     {
-        
         var userId = User.Claims.FirstOrDefault()?.Value;
         var cars = 
             await _service.CarService.GetAllCarsForUserAsync(userId, carParameters, trackChanges: false);

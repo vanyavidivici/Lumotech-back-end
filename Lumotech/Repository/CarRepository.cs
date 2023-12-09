@@ -22,7 +22,7 @@ public class CarRepository : RepositoryBase<Car>, ICarRepository
     
     public async Task<IEnumerable<Car>> 
         GetAllCarsForUserAsync(string userId, CarParameters carParameters, bool trackChanges) =>
-        await FindAll(trackChanges)
+        await FindByCondition(c => c.UserId.Equals(userId), trackChanges)
             .Search(carParameters.SearchTerm)
             .Sort(carParameters.OrderBy)
             .Skip((carParameters.PageNumber - 1) * carParameters.PageSize)
