@@ -13,15 +13,19 @@ public class Order
     
     public string? Note { get; set; }
     [Required(ErrorMessage = "Status is a required field.")]
-    public string Status { get; set; }
+    public string? Status { get; set; }
     
     [ForeignKey(nameof(Car))]
     public Guid CarId { get; set; }
     public Car? Car { get; set; }
-
+    
     public Guid RobotId { get; set; }
     public Robot? Robot { get; set; }
 
     public double GpsLatitude { get; set; }
     public double GpsLongitude { get; set; }
+    
+    [ForeignKey("User")]
+    public string? UserId { get; set; }
+    public User? User { get; set; }
 }
