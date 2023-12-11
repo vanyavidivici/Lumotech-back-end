@@ -9,4 +9,5 @@ public interface IServiceManager
     IAuthenticationService AuthenticationService { get; }
     IUserService UserService { get; }
     IOrderService OrderService { get; }
+    IBackupService BackupService { get; }
 }

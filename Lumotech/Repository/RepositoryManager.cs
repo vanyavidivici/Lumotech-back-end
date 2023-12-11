@@ -11,6 +11,7 @@ public sealed class RepositoryManager : IRepositoryManager
     private readonly Lazy<IOrderRepository> _orderRepository;
     private readonly Lazy<ISubscriptionRepository> _subscriptionRepository;
     private readonly Lazy<ILocationRepository> _locationRepository;
+    private readonly Lazy<IBackupRepository> _backupRepository;
 
     public RepositoryManager(RepositoryContext repositoryContext)
     {
@@ -21,6 +22,7 @@ public sealed class RepositoryManager : IRepositoryManager
         _orderRepository = new Lazy<IOrderRepository>(() => new OrderRepository(repositoryContext));
         _subscriptionRepository = new Lazy<ISubscriptionRepository>(() => new SubscriptionRepository(repositoryContext));
         _locationRepository = new Lazy<ILocationRepository>(() => new LocationRepository(repositoryContext));
+        _backupRepository = new Lazy<IBackupRepository>(() => new BackupRepository(repositoryContext));
     }
     
     public ICarRepository Car => _carRepository.Value;
@@ -29,6 +31,7 @@ public sealed class RepositoryManager : IRepositoryManager
     public IOrderRepository Order => _orderRepository.Value;
     public ISubscriptionRepository Subscription => _subscriptionRepository.Value;
     public ILocationRepository Location => _locationRepository.Value;
+    public IBackupRepository Backup => _backupRepository.Value;
 
     public async Task SaveAsync() => await _repositoryContext.SaveChangesAsync();
 }

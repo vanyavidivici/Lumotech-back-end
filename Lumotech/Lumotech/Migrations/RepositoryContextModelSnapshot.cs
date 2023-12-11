@@ -106,11 +106,11 @@ namespace Lumotech.Migrations
                     b.Property<Guid>("CarId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<double>("GpsLatitude")
-                        .HasColumnType("float");
+                    b.Property<string>("GpsLatitude")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("GpsLongitude")
-                        .HasColumnType("float");
+                    b.Property<string>("GpsLongitude")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
@@ -340,19 +340,13 @@ namespace Lumotech.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0342cee5-3b5d-48aa-81aa-8e2857653790",
+                            Id = "4b2c90a8-9f7f-4769-aee6-8779f7e3fe71",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "5dc3a590-1a2d-4845-9e64-4381afb36375",
-                            Name = "Manager",
-                            NormalizedName = "MANAGER"
-                        },
-                        new
-                        {
-                            Id = "19e6e5de-e33a-485b-adfc-d7855eee8c2d",
+                            Id = "2de8fb5e-3e35-448d-8e61-21d7e4cd48cc",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -487,13 +481,15 @@ namespace Lumotech.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.Models.User", null)
+                    b.HasOne("Entities.Models.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Car");
 
                     b.Navigation("Robot");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Entities.Models.Robot", b =>

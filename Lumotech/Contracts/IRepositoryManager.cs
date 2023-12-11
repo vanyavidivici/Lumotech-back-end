@@ -8,6 +8,7 @@ public interface IRepositoryManager
     IOrderRepository Order { get; }
     ISubscriptionRepository Subscription { get; }
     ILocationRepository Location { get; }
+    IBackupRepository Backup { get; }
 
     Task SaveAsync();
 }
