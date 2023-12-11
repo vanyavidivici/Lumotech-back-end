@@ -61,9 +61,9 @@ public sealed class CarService : ICarService
 
     public async Task DeleteCarAsync(Guid id, bool trackChanges)
     {
-        var company = await GetCarAndCheckIfItExists(id, trackChanges);
+        var car = await GetCarAndCheckIfItExists(id, trackChanges);
         
-        _repository.Car.DeleteCar(company);
+        _repository.Car.DeleteCar(car);
         await _repository.SaveAsync();
     }
 

@@ -8,4 +8,5 @@ public interface IServiceManager
     ILocationService LocationService { get; }
     IAuthenticationService AuthenticationService { get; }
     IUserService UserService { get; }
+    IOrderService OrderService { get; }
 }

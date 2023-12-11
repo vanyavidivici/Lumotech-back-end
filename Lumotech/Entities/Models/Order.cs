@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Entities.Enums;
 
 namespace Entities.Models;
 
@@ -15,15 +14,14 @@ public class Order
     [Required(ErrorMessage = "Status is a required field.")]
     public string? Status { get; set; }
     
-    [ForeignKey(nameof(Car))]
     public Guid CarId { get; set; }
     public Car? Car { get; set; }
     
     public Guid RobotId { get; set; }
     public Robot? Robot { get; set; }
 
-    public double GpsLatitude { get; set; }
-    public double GpsLongitude { get; set; }
+    public string? GpsLatitude { get; set; }
+    public string? GpsLongitude { get; set; }
     
     [ForeignKey("User")]
     public string? UserId { get; set; }

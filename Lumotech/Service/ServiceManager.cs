@@ -15,6 +15,7 @@ public sealed class ServiceManager : IServiceManager
     private readonly Lazy<ILocationService> _locationService;
     private readonly Lazy<IAuthenticationService> _authenticationService;
     private readonly Lazy<IUserService> _userService;
+    private readonly Lazy<IOrderService> _orderService;
     
     public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger, IMapper mapper, 
         UserManager<User> userManager, IConfiguration configuration)
@@ -29,6 +30,8 @@ public sealed class ServiceManager : IServiceManager
             new AuthenticationService(logger, mapper, userManager, configuration));
         _userService = new Lazy<IUserService>(() => 
             new UserService(logger, mapper, userManager, configuration));
+        _orderService = new Lazy<IOrderService>(() => new OrderService(repositoryManager, logger,
+            mapper));
     }
     
     public ICarService CarService => _carService.Value;
@@ -37,4 +40,5 @@ public sealed class ServiceManager : IServiceManager
     public ILocationService LocationService => _locationService.Value;
     public IAuthenticationService AuthenticationService => _authenticationService.Value;
     public IUserService UserService => _userService.Value;
+    public IOrderService OrderService => _orderService.Value;
 }
